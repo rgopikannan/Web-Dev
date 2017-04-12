@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <title>File upload Node.</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <style media="screen">
+        .contentPreview {
+            max-width: 800px;
+            max-height: 600px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
+            <input id="browseFile" type="file" name="userPhoto" />
+            <!-- <input type="submit" value="Upload Image" name="submit">          -->
+            <span id="status"></span>
+        </form>
+        <div class="contentPreview">
+            <img id="imgPreview" />
+            <div class="txtPreview">
+              <ul class="mylist"/>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+
+        $('#browseFile').on("change", function(e) {
+            var fname = e.target.value;
+            var reg = /\.(xml)$/i;
+
+            $('#uploadForm').val('OpenForm');
+            $("#uploadForm").attr("enctype", "multipart/form-data");
+            $("#uploadForm").submit();
+
+
+            //(/\.(xml)$/i).test(filename)
+            /*if (!reg.test(fname)) {
+                $("#fileErrSpan").text(errFileTypeTxt);
+            } else {
+                $('#uploadForm').val('OpenForm');
+                $("#uploadForm").attr("enctype", "multipart/form-data");
+                $("#uploadForm").submit();
+            }*/
+        });
+
+
+        $('#uploadForm').submit(function() {
+            $("#status").empty().text("File is uploading...");
+            $(this).ajaxSubmit({
+                error: function(xhr) {
+                    status('Error: ' + xhr.status);
+                },
+                success: function(response) {
+                    $("#status").empty().text("File upladed successfully...!!");
+                    console.log(response);
+                    $('#imgPreview').css('display','none')
+                    $('.txtPreview').css('display','none')
+                    if (response.file.mimetype == 'text/plain') {
+                        //document.getElementById("imgSrc").src = e.target.result;
+                        //console.log(response.data);
+                          $('.txtPreview').css('display','block')
+                          var doiList = response.data.toString().split("\n");
+                          var cList = $('ul.mylist')
+                          $.each(doiList, function(i)
+                          {
+                              var li = $('<li>'+ doiList[i]+' </li>')
+                                  .appendTo(cList);
+                          });
+                    } else {
+                        var path = response.file.destination + '/';
+                        if (response.file.mimetype == 'image/png' || response.file.mimetype == 'image/jpeg') {
+                            path = path + response.file.filename;
+                        }
+                        $('#imgPreview').css('display','block')
+                        document.getElementById("imgPreview").src = path;
+                    }
+                    /* { fieldname: 'userPhoto',
+                       originalname: 'data.txt',
+                       encoding: '7bit',
+                       mimetype: 'text/plain',
+                       destination: './uploads',
+                       filename: 'userPhoto-1492024869924',
+                       path: 'uploads\\userPhoto-1492024869924',
+                       size: 30 } */
+                }
+            });
+            //Very important line, it disable the page refresh.
+            return false;
+        });
+    });
+</script>
+
+</html>
