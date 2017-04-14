@@ -2,13 +2,28 @@
 
 <head>
     <title>File upload Node.</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+    <!-- Form jquery libs -->
+  <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     <style media="screen">
         .contentPreview {
             max-width: 800px;
             max-height: 600px;
         }
+
+        #imgPreview{
+          display: none;
+        }
+
+        .txtPreview{
+          display: none;
+        }
+
     </style>
 
 </head>
@@ -23,7 +38,15 @@
         <div class="contentPreview">
             <img id="imgPreview" />
             <div class="txtPreview">
-              <ul class="mylist"/>
+                <ul class="mylist" />
+                <table id="table" data-height="460">
+                    <thead>
+                        <tr>
+                            <th data-field="id">S.No</th>
+                            <th data-field="doi">DOI</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
 
@@ -63,25 +86,33 @@
                 success: function(response) {
                     $("#status").empty().text("File upladed successfully...!!");
                     console.log(response);
-                    $('#imgPreview').css('display','none')
-                    $('.txtPreview').css('display','none')
+                    $('#imgPreview').css('display', 'none')
+                    $('.txtPreview').css('display', 'none')
                     if (response.file.mimetype == 'text/plain') {
                         //document.getElementById("imgSrc").src = e.target.result;
                         //console.log(response.data);
-                          $('.txtPreview').css('display','block')
-                          var doiList = response.data.toString().split("\n");
-                          var cList = $('ul.mylist')
-                          $.each(doiList, function(i)
-                          {
-                              var li = $('<li>'+ doiList[i]+' </li>')
-                                  .appendTo(cList);
-                          });
+                        $('.txtPreview').css('display', 'block')
+                        var doiList = response.data.toString().split("\n");
+                        var tabelList = [];
+                        //var cList = $('ul.mylist')
+                        $.each(doiList, function(i) {
+                            var obj = {
+                                'id': (i + 1),
+                                'doi': doiList[i]
+                            }
+                            console.log(obj)
+                            tabelList.push(obj);
+                            //var li = $('<li>'+ doiList[i]+' </li>').appendTo(cList);
+                        });
+                        $('#table').bootstrapTable({
+                            data: tabelList
+                        });
                     } else {
                         var path = response.file.destination + '/';
                         if (response.file.mimetype == 'image/png' || response.file.mimetype == 'image/jpeg') {
                             path = path + response.file.filename;
                         }
-                        $('#imgPreview').css('display','block')
+                        $('#imgPreview').css('display', 'block')
                         document.getElementById("imgPreview").src = path;
                     }
                     /* { fieldname: 'userPhoto',
