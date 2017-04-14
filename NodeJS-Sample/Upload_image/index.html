@@ -58,12 +58,14 @@
     $(document).ready(function() {
 
         $('#browseFile').on("change", function(e) {
-            var fname = e.target.value;
-            var reg = /\.(xml)$/i;
+
 
             $('#uploadForm').val('OpenForm');
             $("#uploadForm").attr("enctype", "multipart/form-data");
             $("#uploadForm").submit();
+
+            //var fname = e.target.value;
+            //var reg = /\.(xml)$/i;
 
             //(/\.(xml)$/i).test(filename)
             /*if (!reg.test(fname)) {
@@ -87,7 +89,7 @@
                     $('#imgPreview').css('display', 'none')
                     $('.txtPreview').css('display', 'none')
                     if (response.file.mimetype == 'text/plain') {
-                        //document.getElementById("imgSrc").src = e.target.result;                      
+                        //document.getElementById("imgSrc").src = e.target.result;
                         $('.txtPreview').css('display', 'block')
                         var doiList = response.data.toString().split("\n");
                         var tabelList = [];
@@ -97,7 +99,7 @@
                                 'id': (i + 1),
                                 'doi': doiList[i]
                             }
-                            console.log(obj)
+                            //console.log(obj)
                             tabelList.push(obj);
                             //var li = $('<li>'+ doiList[i]+' </li>').appendTo(cList);
                         });
