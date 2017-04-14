@@ -75,7 +75,6 @@
             }*/
         });
 
-
         $('#uploadForm').submit(function() {
             $("#status").empty().text("File is uploading...");
             $(this).ajaxSubmit({
@@ -88,8 +87,7 @@
                     $('#imgPreview').css('display', 'none')
                     $('.txtPreview').css('display', 'none')
                     if (response.file.mimetype == 'text/plain') {
-                        //document.getElementById("imgSrc").src = e.target.result;
-                        //console.log(response.data);
+                        //document.getElementById("imgSrc").src = e.target.result;                      
                         $('.txtPreview').css('display', 'block')
                         var doiList = response.data.toString().split("\n");
                         var tabelList = [];
