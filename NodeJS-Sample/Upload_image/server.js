@@ -4,7 +4,7 @@ var fs = require("fs");
 
 var app = express();
 
-console.log('__dirname... '+__dirname);
+console.log('__dirname... ' + __dirname);
 
 //app.use("/", express.static(__dirname));
 
@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
         callback(null, './uploads');
     },
     filename: function(req, file, callback) {
-        callback(null, Date.now()+'-' +file.fieldname);
+        callback(null, Date.now() + '-' + file.fieldname);
     }
 });
 var upload = multer({
@@ -36,15 +36,17 @@ app.post('/api/photo', function(req, res) {
         } else {
             var obj = {};
             obj.file = req.file;
-            res.writeHead(200, {"Content-Type": "application/json"});
+            res.writeHead(200, {
+                "Content-Type": "application/json"
+            });
             if (req.file.mimetype == 'text/plain') {
-                fs.readFile(req.file.path,'utf8', function(err, data) {
+                fs.readFile(req.file.path, 'utf8', function(err, data) {
                     console.log(data);
                     obj.data = data;
-                      return res.end(JSON.stringify(obj));
+                    return res.end(JSON.stringify(obj));
                     //return res.end("File is uploaded");
                 });
-            }else{
+            } else {
                 return res.end(JSON.stringify(obj));
             }
         }
