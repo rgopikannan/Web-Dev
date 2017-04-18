@@ -17,21 +17,20 @@ var upload = multer({ dest: 'uploads/' });
 var type = upload.single('refFile');
 
 app.get('/index.htm', function (req, res) {
-   res.sendFile( __dirname + "/" + "upload/index.html" );
+   //res.sendFile( __dirname + "/" + "upload/index.html" );
+   res.sendFile( __dirname + "/" + "index.html" );
 });
 
-app.post('/file_upload', function (req, res) {
+app.post('/file_upload', type, function (req, res) {
    console.log(req.file);
    //console.log(req.file.path);
    //console.log(req.file.mimetype);
-   //var file = __dirname + "/" + req.file.fieldname;
+   var file = __dirname + "/" + req.file.fieldname;
 
-   res.end( "success...");
-   /*
+   //res.end( "success...");
+
    fs.readFile( req.file.path, function (err, data) {
-
       console.log('data...   '+data);
-
       fs.writeFile(file, data, function (err) {
          if( err ){
             console.log( err );
@@ -44,7 +43,7 @@ app.post('/file_upload', function (req, res) {
          //console.log( response.filename );
          res.end( JSON.stringify( response ) );
       });
-   });*/
+   });
 });
 
 var server = app.listen(8082, '138.12.195.27', function () {
