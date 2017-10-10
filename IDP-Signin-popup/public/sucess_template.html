@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body onload="callPostMsg1()">
+	<script type="text/javascript">
+		function callPostMsg1(){
+			var origin = window.location.hostname;
+			console.log("dispatch postMessage..   "+origin);
+			// window.postMessage("message", "*"); //http://138.12.195.27:3000/
+			var obj = {};
+			obj.event = "AUTHENTICATION_SUCCESS_EVENT";
+			obj.url = "http://www.sciencedirect.com/";
+			var str = JSON.stringify(obj);
+			parent.postMessage(str, "*");
+		}		
+	</script>
+	<div> 
+		<h1>Sign in sucessfull...</h1>
+	</div>
+</body>
+</html>

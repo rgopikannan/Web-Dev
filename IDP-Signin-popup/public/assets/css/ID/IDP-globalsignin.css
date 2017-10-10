@@ -1,0 +1,7 @@
+/*Hero image- background image given by the product*/
+.els-hero-image{
+	background-image: url('../../images/MDY/page.jpg');
+	background-color: #4a4a4a;
+	background-size: cover;
+	overflow: auto;
+}

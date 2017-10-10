@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- #*
+The server renders this HTML page in an end-user's browser when
+needed authentication credentials may be obtained via HTTP Basic
+Authentication or an HTML form.
+
+Velocity variables (identified by the $ character) are generated
+at runtime by the server.
+
+The following variables are available on this page, but not used by default:
+
+$entityId       - The entity id (connection id) of the SP Connection used in this SSO transaction
+$connectionName - The name of the SP Connection used in this SSO transaction
+$client_id      - The id of the OAuth client used in this transaction
+
+It is recommended to sanitize the values that are displayed using $escape.escape() for example $escape.escape($client_id).
+
+Change text or formatting as needed. Modifying Velocity statements
+is not recommended as it may interfere with expected server behavior.
+*#
+
+<!-- template name: idplus.html.password.form.signin.template.html --
+
+#set( $messageKeyPrefix = "idplus.html.password.form.signin.template." )
+#set( $messageKeyPrefixForgot = "idplus.html.forgot.form.signin.template." )
+#parse("idplusCommonPrefix.vm")
+#set( $thisTemplate = "idplus.html.password.form.signin.template." )
+#set( $screen = "SIGN_IN:SIGN IN:ASK FOR PASSWORD" )
+#set( $pageType = "AP-LP" ) -->
+
+<html lang="$locale.getLanguage()">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=10,11" />
+	<base href="$PingFedBaseURL"/>
+	<title>Elsevier global signin</title>	
+	<link rel="stylesheet" href="assets/css/elsevier/IDP-globalsignin.css">
+	<link rel="stylesheet" href="assets/css/$platCode/IDP-globalsignin.css">
+	<link rel="stylesheet" href="assets/fonts/gizmo/ss-gizmo.css">
+	<link rel="stylesheet" href="assets/css/elsevier/IDP-formAnimation.css">
+	<link rel="shortcut icon" type="image/png"  href="assets/images/elsevier/mstile-144x144.png"/>
+</head>
+<body id="els-addDetails">
+<script type="text/javascript">
+	/*function callPostMsg(){
+		var origin = window.location.hostname;
+		console.log("dispatch postMessage..   "+origin);
+		// window.postMessage("message", "*"); //http://138.12.195.27:3000/
+		var obj = {};
+		obj.event = "AUTHENTICATION_SUCCESS_EVENT";
+		obj.url = "http://www.sciencedirect.com/";
+		var str = JSON.stringify(obj);
+		parent.postMessage(str, "*");
+	}	*/
+</script>
+<a class="accessibility-link-skip" title="Skip to content" href="#maincontent">Skip to content</a>
+<header class="client-info-header">
+	<img class="els-client-logo" src="assets/images/elsevier/mendeley_full.svg" alt="Mendeley">
+</header>
+<div class="els-hero-image">
+	<form action="$closeUrl" method="post" novalidate class="close-form" name="close-form">
+		<button type="submit" aria-label="$templateMessages.getMessage($commonPrefix, 'axButton')" name="close" id="els-close" value="true" class="ss-delete els-icon-closing-nojs" role=link>$templateMessages.getMessage($commonPrefix, "axButton")</button>
+	</form>
+	<!-- <button onClick="callPostMsg()">click..! </button> -->
+	<form class="els-signin-form" method="POST" action="/signin" autocomplete="off" name="elsForm" novalidate>
+		<section class="container-fluid">
+			<main id="maincontent">
+				<img src="assets/images/elsevier/elsevier.svg" alt="Elsevier">
+				<h2 class="els-signin-client">Enter your password to sign in to Mendeley</h2>
+				<div class="els-avatar-bg">
+		          <span class="els-profileImg"><img class="els-avatar-icon" src="$profileImageUrl" alt="Profile Picture"></span> 
+		          <!-- assets/images/elsevier/profile-pic.svg -->
+				  <!-- in phase 3
+					#if($profileImageUrlExist)
+						<span class="els-profileImg"><img class="els-avatar-icon" src="$profileImageUrl" alt="$profileImageAltText"></span>
+					#end
+					$profileImageUrlExist       		$profileImageAltText
+					get src url from aecore     		Profile Picture
+					Did not get src url from aecore		Default Profile Picture
+				   -->
+		        </div>
+				<div class="form-row">
+					<p class="disabled">test123@elsevier.com</p>
+		          <span class="els-edit-icon">
+		            <!-- <a href="$url?signInDifferent=true" class="ss-write" id="els-switch-account"></a> -->
+		          </span>
+				</div>	
+				<div class="form-row password">					
+					<input type="password" id="password" name="pwd" aria-required="true" aria-labelledby="passwordlabel passworderror" required autocomplete="on" aria-autocomplete="inline" autofocus>
+					<span class="bar"></span>
+					<label id="passwordlabel" for="password">Password</label>				
+					<span class="errormsg" id="passworderror" name="$passwordErrorMessageKey">
+					<!-- #if($passwordErrorMessageKey) 
+						$templateMessages.getMessage($messageKeyPrefix, $passwordErrorMessageKey)
+					#end -->
+					</span>									
+				</div>
+
+				<div class="els-stay-signed">				
+					<div class="els-checkbox-wrapper">
+						<input type="checkbox" id="rememberme" name="rememberme" aria-labelledby="rememberMe" aria-checked="true" checked/>
+						<label id="rememberMe" for="rememberme">Stay signed in</label>
+					</div>
+					<div class="els-forgot-password">
+						<a href="$url?forgot=true">Forgot password?</a>
+					</div>
+				</div>				
+				<button type="submit" class="els-primaryBtn" value="true" name="signin" role=link >Sign in</button>
+			</main>
+		</section>
+		<input type="hidden" name="isRedeemed" value="$isRedeemed"/>
+	</form>
+</div>
+<footer class="els-footer">
+    <div class="els-footer-logo">
+        <a href="http://www.elsevier.com/"><img src="assets/images/elsevier/elsevier.svg" alt="Elsevier"></a>
+    </div>
+    <div class="els-document-links">
+        <div class="els-document-link-row">
+            <a href="https://www.elsevier.com/about" class="els-document-link">About Elsevier</a>
+            <a href="https://www.elsevier.com/legal/elsevier-website-terms-and-conditions" class="els-document-link">Terms and Conditions</a>
+            <a href="https://www.elsevier.com/legal/privacy-policy" class="els-document-link">Privacy policy</a>
+            <a href="" class="els-document-link">Help</a>
+        </div>
+        <div class="els-document-link-row">
+            Cookies are used by this site. For more information, visit the <a href="https://www.elsevier.com/legal/use-of-cookies" class="els-document-link cookie">cookies page</a>
+        </div>
+    </div>
+    <div class="els-footer-reed-logo">
+    	<a title="Go to RELX Group Homepage" href="http://www.reedelsevier.com/">
+    		<img src="assets/images/elsevier/RelexLogo.svg" alt="RELXGroup">
+    	</a>
+    </div>
+</footer>
+</body>
+</html>

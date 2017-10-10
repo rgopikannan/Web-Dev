@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <script>       
+        // https://devnx-id.elsevier.com/as/authorization.oauth2?client_id=IDPLUS-mendeley&redirect_uri=https://devnx-idp-idptestclient.np.elsevier-ae.com/IDPlusTestClient/homepage&response_type=token%20id_token&scope=openid&authType=SINGLE_SIGN_IN&prompt=login&platSite=MDY/mendeley&ui_locales=en-US&nonce=QP6RHC2KXx&state=q4P3-8Z6eW
+             
+
+        var win;
+        function login() {
+          // var _url = "https://devnx-id.elsevier.com/as/authorization.oauth2?client_id=IDPLUS-mendeley&redirect_uri=https://devnx-idp-idptestclient.np.elsevier-ae.com/IDPlusTestClient/homepage&response_type=token%20id_token&scope=openid&authType=SINGLE_SIGN_IN&prompt=login&platSite=MDY/mendeley&ui_locales=en-US&nonce=QP6RHC2KXx&state=q4P3-8Z6eW";
+
+         var _url ="http://138.12.195.27:3000/signin_template.html";
+
+          // Fixes dual-screen position Most browsers Firefox
+          var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+          var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+          var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+          var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+          var w = 360;
+          var h = 550;
+          var title = "Home page";
+          var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+          var top = ((height / 2) - (h / 2)) + dualScreenTop;
+          win = window.open(_url, title, 'width=' + w + ', height=' + h + ', top=' + top + ', left=' + left+',resizable=0,scrollbars=1');
+
+          
+
+          // win.addEventListener('resize', function(){
+          //      console.log("...Resized...  ");
+          //     win.resizeTo(w, h);
+          // });
+
+          setTimeout(function () {            
+            console.log("win....  "+win);
+            if(win){
+            	if(window.addEventListener){
+					console.log('window.addEventListener...  ');
+					window.addEventListener('message', onPingBackMessage, false);
+				}else if (window.attachEvent){
+					console.log('window.attachEvent...  ');
+					window.attachEvent('message', onPingBackMessage, false);
+				}	
+            }
+        },500);
+
+            // win.resizeTo(360, 600);
+
+          // }, 1000);
+
+          // Puts focus on the newWindow
+          if (window.focus) {
+              win.focus();
+          }         
+        }
+				
+
+		var openedDomain = "http://138.12.195.27:3000/"
+
+		function onPingBackMessage(event) {
+			console.log("onPingBackMessage...  "+event.origin)
+			if(event.origin == openedDomain) {
+			  // trackedWindows[event.data] = true;
+			}
+      var eventData = event.data;
+      //console.log(event.origin+"  Hello from " + eventData);
+      if(eventData && eventData != ''){
+        var obj = JSON.parse(eventData);
+        if(obj)
+        { 
+          console.log("obj.event... "+obj.event)
+          if(obj.event == "AUTHENTICATION_SUCCESS_EVENT")
+          {
+            
+          }
+        } 
+      }
+
+		}
+
+    // window.addEventListener('message', onPingBackMessage, false);
+
+
+    </script>
+</head>
+
+<body>
+    <a href='#' onClick='login();' id="loginText"'>Sign In</a>
+    <a href="#" style="display:none" id="logoutText" target='myIFrame' onclick="myIFrame.location='https://www.google.com/accounts/Logout'; startLogoutPolling();return false;"> Click here to logout </a>
+    <!-- <iframe name='myIFrame' id="myIFrame" src="http://138.12.195.27:3000/signin_template.html" width="360" height="550" ></iframe> -->
+    <div id='uName'></div>
+    <img src='' id='imgHolder'/>
+</body>
+</html>

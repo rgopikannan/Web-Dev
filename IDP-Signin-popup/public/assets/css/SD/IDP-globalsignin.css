@@ -1,0 +1,7 @@
+/*Hero image- background image given by the product*/
+.els-hero-image{
+	background-image: url('../../images/SD/page.jpg');
+	background-color: #f5f5f5;
+	background-size: cover;
+	overflow: auto;
+}

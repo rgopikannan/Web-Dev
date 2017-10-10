@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="974px" height="35px" viewBox="0 0 974 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>tooltip-edge</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="tooltip-edge" sketch:type="MSArtboardGroup">
+            <g id="tooltip-edge-1" sketch:type="MSLayerGroup" transform="translate(-1.000000, -3.000000)">
+                <g id="Page-1" sketch:type="MSShapeGroup">
+                    <g id="tooltip-edge">
+                        <g id="tooltip-edge-+-tooltip-edge-copy">
+                            <g id="tooltip-edge" transform="translate(0.000000, 2.000000)">
+                                <g id="bg-tooltip">
+                                    <g id="Line-+-Triangle-1-+-Line" transform="translate(247.500000, 9.500000) scale(1, -1) translate(-247.500000, -9.500000) ">
+                                        <path d="M17.4924275,17.5 L490.499996,17.5" id="Line" stroke="#EB8339"></path>
+                                        <path d="M17.4924275,16.5 L493.499996,16.5" id="Line-Copy" stroke="#EB8339"></path>
+                                        <path d="M1,2 L17,18 L1,18 L1,2 Z" id="Triangle-1" fill-opacity="0.85" fill="#EBEBEB"></path>
+                                        <path d="M19,19 L0.493244469,0.493244469" id="Line" stroke="#EB8339" stroke-width="2"></path>
+                                    </g>
+                                </g>
+                            </g>
+                            <g id="tooltip-edge-copy" transform="translate(732.000000, 10.500000) scale(-1, 1) translate(-732.000000, -10.500000) translate(488.000000, 0.000000)">
+                                <g id="bg-tooltip">
+                                    <g id="Line-+-Triangle-1-+-Line" transform="translate(244.000000, 10.500000) scale(1, -1) translate(-244.000000, -10.500000) ">
+                                        <path d="M17.4924275,17.5 L487.504242,17.5" id="Line" stroke="#EB8339"></path>
+                                        <path d="M17.4924275,16.5 L487.504242,16.5" id="Line-Copy" stroke="#EB8339"></path>
+                                        <path d="M1,2 L17,18 L1,18 L1,2 Z" id="Triangle-1" fill-opacity="0.85" fill="#EBEBEB"></path>
+                                        <path d="M20.5067558,20.5067558 L0,0" id="Line" stroke="#EB8339" stroke-width="2"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        <g id="tooltip-edge-+-tooltip-edge-copy-2" transform="translate(489.000000, 29.500000) scale(-1, -1) translate(-489.000000, -29.500000) translate(0.000000, 18.000000)">
+                            <g id="tooltip-edge">
+                                <g id="bg-tooltip">
+                                    <g id="Line-+-Triangle-1-+-Line" transform="translate(245.000000, 11.500000) scale(1, -1) translate(-245.000000, -11.500000) ">
+                                        <path d="M19.4924275,19.5 L489.504242,19.5" id="Line" stroke="#EB8339"></path>
+                                        <path d="M19.4924275,18.5 L489.504242,18.5" id="Line-Copy" stroke="#EB8339"></path>
+                                        <path d="M3,4 L19,20 L3,20 L3,4 Z" id="Triangle-1" fill-opacity="0.85" fill="#EBEBEB"></path>
+                                        <path d="M22.5607109,22.5607109 L3.55271368e-15,0" id="Line" stroke="#EB8339" stroke-width="2"></path>
+                                    </g>
+                                </g>
+                            </g>
+                            <g id="tooltip-edge-copy" transform="translate(732.000000, 10.500000) scale(-1, 1) translate(-732.000000, -10.500000) translate(486.000000, 0.000000)">
+                                <g id="bg-tooltip">
+                                    <g id="Line-+-Triangle-1-+-Line" transform="translate(246.000000, 10.500000) scale(1, -1) translate(-246.000000, -10.500000) ">
+                                        <path d="M17.4924275,17.5 L490.499996,17.5" id="Line" stroke="#EB8339"></path>
+                                        <path d="M17.4924275,16.5 L490.501064,16.5" id="Line-Copy" stroke="#EB8339"></path>
+                                        <path d="M1,2 L17,18 L1,18 L1,2 Z" id="Triangle-1" fill-opacity="0.85" fill="#EBEBEB"></path>
+                                        <path d="M20.5067558,20.5067558 L0,0" id="Line" stroke="#EB8339" stroke-width="2"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

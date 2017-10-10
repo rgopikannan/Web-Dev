@@ -1,0 +1,21 @@
+/* Header background */
+.client-info-header.SSRN{
+	background-color: #0d4782;
+	margin: 0;
+	width: 100%;
+}
+.client-info-header img {
+    width: 65px;
+    height: 27px;
+    margin: 30px 0 25px 30px;
+}
+.els-client-logo:after {
+	background-color: #0d4782;
+}
+/*Hero image- background image given by the product*/
+.els-hero-image{
+	background-image: url('../../images/SSRN/page.jpg');
+	background-color: #f0f1f3;
+	background-size: cover;
+	overflow: auto;
+}
