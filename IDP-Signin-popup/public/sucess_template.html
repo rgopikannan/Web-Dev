@@ -10,10 +10,13 @@
 			console.log("dispatch postMessage..   "+origin);
 			// window.postMessage("message", "*"); //http://138.12.195.27:3000/
 			var obj = {};
-			obj.event = "AUTHENTICATION_SUCCESS_EVENT";
+			obj.event = "IDP_AUTHENTICATION_SUCCESS";
 			obj.url = "http://www.sciencedirect.com/";
 			var str = JSON.stringify(obj);
-			parent.postMessage(str, "*");
+
+			// This will post a message to the parent
+			window.opener.postMessage(str, "*");
+			// window.postMessage(str, "*");
 		}		
 	</script>
 	<div> 

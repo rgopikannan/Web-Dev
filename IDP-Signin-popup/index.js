@@ -29,6 +29,7 @@ app.post('/signin', function(req, res) {
 });
 
 
+// macip:  http://138.12.195.27:3000/index.html#
 
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!');

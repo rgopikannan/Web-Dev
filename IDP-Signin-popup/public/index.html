@@ -6,10 +6,15 @@
              
 
         var win;
+        var domain = ['http://138.12.195.27:3000','http://127.0.0.1:3000'];
         function login() {
           // var _url = "https://devnx-id.elsevier.com/as/authorization.oauth2?client_id=IDPLUS-mendeley&redirect_uri=https://devnx-idp-idptestclient.np.elsevier-ae.com/IDPlusTestClient/homepage&response_type=token%20id_token&scope=openid&authType=SINGLE_SIGN_IN&prompt=login&platSite=MDY/mendeley&ui_locales=en-US&nonce=QP6RHC2KXx&state=q4P3-8Z6eW";
 
-         var _url ="http://138.12.195.27:3000/signin_template.html";
+
+
+         var _url =domain[1]+"/signin_template.html";
+
+         http://127.0.0.1:3000/
 
           // Fixes dual-screen position Most browsers Firefox
           var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
@@ -58,7 +63,8 @@
 		var openedDomain = "http://138.12.195.27:3000/"
 
 		function onPingBackMessage(event) {
-			console.log("onPingBackMessage...  "+event.origin)
+			console.log("onPingBackMessage...  "+event.origin);
+      // alert('onPingBackMessage....');
 			if(event.origin == openedDomain) {
 			  // trackedWindows[event.data] = true;
 			}
@@ -69,18 +75,17 @@
         if(obj)
         { 
           console.log("obj.event... "+obj.event)
-          if(obj.event == "AUTHENTICATION_SUCCESS_EVENT")
+          if(obj.event == "IDP_AUTHENTICATION_SUCCESS")
           {
-            
+            window.open(obj.url,"_self")
           }
         } 
       }
 
+      win.close();
 		}
 
     // window.addEventListener('message', onPingBackMessage, false);
-
-
     </script>
 </head>
 
